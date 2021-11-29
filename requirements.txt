@@ -1,0 +1,4 @@
+speedtest-cli
+smbprotocol
+python-dotenv
+dropbox
