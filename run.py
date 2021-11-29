@@ -57,6 +57,25 @@ def test_dropbox():
         dbx.files_delete(filepath)
         os.unlink("100MB")
 
+def test_gdrive():
+    print("Testing Google Drive")
+    from pydrive2.auth import GoogleAuth
+    from pydrive2.drive import GoogleDrive
+    gauth = GoogleAuth()
+    gauth.CommandLineAuth()
+    drive = GoogleDrive(gauth)
+    s = time.time()
+    file = drive.CreateFile({'title': '100MB'})
+    file.SetContentString(str(testfile))
+    file.Upload()
+    print(f"Upload: {round(100 / (time.time() - s), 2)}MB/s")
+    s = time.time()
+    file = drive.CreateFile({'id': file["id"]})
+    file.GetContentString()
+    print(f"Download: {round(100 / (time.time() - s), 2)}MB/s")
+    file.Delete()
+
 test_speedtest()
 test_unifiles()
 test_dropbox()
+test_gdrive()

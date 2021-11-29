@@ -5,7 +5,7 @@ Python script to run speedtests against several file storage options supported b
 
 `sudo pip3 install -r requirements.txt`  
 
-Copy .env.example to .env and replace with your logins / tokens
+Copy .env.example to .env and replace with your logins / tokens. Alternatively, set environment variables.
 
 ### Running
 
