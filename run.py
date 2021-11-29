@@ -19,7 +19,13 @@ def test_speedtest():
     r = s.results.dict()
     print(f"Upload: {round(r['upload'] / 1024 / 1024 / 8, 2)} MB/s")
     print(f"Download: {round(r['download'] / 1024 / 1024 / 8, 2)} MB/s")
-    print(f"Ping: {r['ping']}ms")
+    s.download(threads=1)
+    s.upload(threads=1)
+    r = s.results.dict()
+    print(f"Single-threaded upload: {round(r['upload'] / 1024 / 1024 / 8, 2)} MB/s")
+    print(f"Single-threaded download: {round(r['download'] / 1024 / 1024 / 8, 2)} MB/s")
+    if r['ping'] != 1800000.0:
+        print(f"Ping: {r['ping']}ms")
 
 def test_unifiles():
     print("Testing Unifiles")
