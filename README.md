@@ -15,14 +15,20 @@ Copy .env.example to .env and replace with your logins / tokens. Alternatively, 
 
 ```
 Running speedtest
-Upload: 167.33 MB/s
-Download: 203.19 MB/s
-Single-threaded upload: 36.93 MB/s
-Single-threaded download: 67.02 MB/s
+Upload: 184.72 MB/s
+Download: 233.23 MB/s
+Single-threaded upload: 38.34 MB/s
+Single-threaded download: 70.67 MB/s
 Testing Unifiles
-Upload: 47.36MB/s
-Download: 53.42MB/s
+Upload: 51.7MB/s
+Download: 44.85MB/s
 Testing Dropbox
-Upload: 13.09MB/s
-Download: 12.14MB/s
+Upload: 13.93MB/s
+Download: 22.42MB/s
+Testing Google Drive
+Upload: 5.05MB/s
+Download: 7.86MB/s
+Testing OneDrive
+Upload: 5.72MB/s
+Download: 5.44MB/s
 ```
