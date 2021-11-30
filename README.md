@@ -14,21 +14,24 @@ Copy .env.example to .env and replace with your logins / tokens. Alternatively, 
 ### Sample output
 
 ```
+Testing local disk
+Write speed: 1336.11MB/s
+Read speed: 1644.35MB/s
 Running speedtest
-Upload: 184.72 MB/s
-Download: 233.23 MB/s
-Single-threaded upload: 38.34 MB/s
-Single-threaded download: 70.67 MB/s
+Upload: 184.35 MB/s
+Download: 152.19 MB/s
+Single-threaded upload: 37.81 MB/s
+Single-threaded download: 73.13 MB/s
 Testing Unifiles
-Upload: 51.7MB/s
-Download: 44.85MB/s
+Upload: 35.03MB/s
+Download: 40.9MB/s
 Testing Dropbox
-Upload: 13.93MB/s
-Download: 22.42MB/s
+Upload: 18.83MB/s
+Download: 24.19MB/s
 Testing Google Drive
-Upload: 5.05MB/s
-Download: 7.86MB/s
+Upload: 5.06MB/s
+Download: 8.22MB/s
 Testing OneDrive
-Upload: 5.72MB/s
-Download: 5.44MB/s
+Upload: 9.57MB/s
+Download: 5.57MB/s
 ```
