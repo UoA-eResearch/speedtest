@@ -93,7 +93,8 @@ def test_onedrive():
     client = onedrivesdk.OneDriveClient(api_base_url, auth_provider, http_provider)
     try:
         auth_provider.load_session()
-    except FileNotFoundError:
+        client.item(drive='me', id='root').children.get()
+    except:
         auth_url = auth_provider.get_auth_url(redirect_uri)
         # Ask for the code
         print('Paste this URL into your browser, approve the app\'s access.')
