@@ -5,7 +5,7 @@ Python script to run speedtests against several file storage options supported b
 
 `sudo pip3 install -r requirements.txt`  
 
-Copy .env.example to .env and replace with your logins / tokens. Alternatively, set environment variables.
+Copy .env.example to .env and replace with your logins / tokens. Alternatively, set environment variables. You can get a Dropbox token at https://www.dropbox.com/developers/apps. A Scoped App Folder with files.content.write and files.content.read permissions should work fine.
 
 ### Running
 
