@@ -3,3 +3,4 @@ smbprotocol
 python-dotenv
 dropbox
 PyDrive2
+onedrivesdk < 2

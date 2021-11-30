@@ -128,5 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# App specific
+# Google Drive session
 credentials.json
+# OneDrive session
+session.pickle
