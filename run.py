@@ -113,6 +113,19 @@ def test_onedrive():
     client.item(id=file.id).delete()
     os.unlink("100MB")
 
+def test_localdisk():
+    print("Testing local disk")
+    s = time.time()
+    with open("100MB", "wb") as f:
+        f.write(testfile)
+    print(f"Write speed: {round(100 / (time.time() - s), 2)}MB/s")
+    s = time.time()
+    with open("100MB", "rb") as f:
+        f.read()
+    print(f"Read speed: {round(100 / (time.time() - s), 2)}MB/s")
+    os.unlink("100MB")
+
+test_localdisk()
 test_speedtest()
 test_unifiles()
 test_dropbox()
