@@ -143,6 +143,46 @@ def test_localdisk():
     os.unlink("100MB")
 
 
+parser = argparse.ArgumentParser(
+    description="Scripts to test the performance of UoA services."
+)
+parser.add_argument(
+    "-u",
+    "--unifiles",
+    help="Test file transfer speed on UniFiles",
+    action="store_true",
+    default=False,
+)
+parser.add_argument(
+    "-d",
+    "--dropbox",
+    help="Test file transfer speed on DropBox",
+    action="store_true",
+    default=False,
+)
+parser.add_argument(
+    "-g",
+    "--gdrive",
+    help="Tests file transfer speed on Google Drive",
+    action="store_true",
+    default=False,
+)
+parser.add_argument(
+    "-o",
+    "--onedrive",
+    help="Test file transfer speed on OneDrive",
+    action="store_true",
+    default=False,
+)
+parser.add_argument(
+    "-s",
+    "--s3",
+    help="Test file transfer speed on an S3 bucket",
+    action="store_true",
+    default=False,
+)
+args = parser.parse_args()
+
 test_localdisk()
 test_speedtest()
 test_unifiles()
