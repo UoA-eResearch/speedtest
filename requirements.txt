@@ -4,3 +4,4 @@ python-dotenv
 dropbox
 PyDrive2
 onedrivesdk < 2
+boto3
