@@ -17,7 +17,7 @@ load_dotenv()
 # 100MB test file
 testfile = os.urandom(1024 * 1024 * 100)
 # Include a 10GB file for S3 multipart
-bigtestfile = os.urandom(1024 * 1024 * 1024 * 10)
+# bigtestfile = os.urandom(1024 * 1024 * 1024 * 10)
 
 
 def test_speedtest():
@@ -158,8 +158,8 @@ def test_s3():
     print("Testing S3 buckets")
     with open("smallfile", "wb") as f:
         f.write(testfile)
-    with open("bigfile", "wb") as f:
-        f.write(bigtestfile)
+    # with open("bigfile", "wb") as f:
+    #    f.write(bigtestfile)
     s3_user = store.get_key("VAST_test/user")
     s3_user = s3_user.replace("\n", "")
     s3_password = store.get_key("VAST_test/password")
@@ -183,7 +183,7 @@ def test_s3():
     client.download_file(bucket, "Small_Test.dat", "smallfile")
     print(f"Download Speed: {round(100 / (time.time() - s, 2))}MB/s")
     os.unlink("smallfile")
-    os.unlink("bigfile")
+    # os.unlink("bigfile")
 
 
 parser = argparse.ArgumentParser(
