@@ -5,12 +5,19 @@ import argparse
 import os
 import time
 
+import passpy
 from dotenv import load_dotenv
 
+GPG_BIN = (
+    "/opt/homebrew/bin/gpg"  # Note this is for my mac and needs to point to GPG binary
+)
+store = passpy.Store(gpg_bin=GPG_BIN)
 load_dotenv()
 
 # 100MB test file
 testfile = os.urandom(1024 * 1024 * 100)
+# Include a 10GB file for S3 multipart
+bigtestfile = os.urandom(1024 * 1024 * 1024 * 10)
 
 
 def test_speedtest():
@@ -39,7 +46,7 @@ def test_unifiles():
     import smbclient
 
     smbclient.ClientConfig(
-        username=os.getenv("SMB_USERNAME"), password=os.getenv("SMB_PASSWORD")
+        username=os.getenv("SMB_USERNAME"), password=store.get_key("SMB_password")
     )
     filepath = r"\\files.auckland.ac.nz\myhome\100MB"
     s = time.time()
@@ -143,6 +150,42 @@ def test_localdisk():
     os.unlink("100MB")
 
 
+def test_s3():
+    import uuid
+
+    import boto3
+
+    print("Testing S3 buckets")
+    with open("smallfile", "wb") as f:
+        f.write(testfile)
+    with open("bigfile", "wb") as f:
+        f.write(bigtestfile)
+    s3_user = store.get_key("VAST_test/user")
+    s3_user = s3_user.replace("\n", "")
+    s3_password = store.get_key("VAST_test/password")
+    s3_password = s3_password.replace("\n", "")
+    s3_endpoint = os.getenv("S3_ENDPOINT")
+    s3_port = os.getenv("S3_PORT")
+    test_bucket = f'{os.getenv("S3_BUCKET")}{str(uuid.uuid4())}'
+    client = boto3.client(
+        "s3",
+        aws_access_key_id=s3_user,
+        aws_secret_access_key=s3_password,
+        enpoint_url=f"{s3_endpoint}:{s3_port}",
+    )
+    print(f"Creating bucket: {test_bucket}")
+    bucket = client.create_bucket(test_bucket)
+    print("Testing with 100MB file")
+    s = time.time()
+    client.upload_file(Filename="smallfile", Bucket=bucket, Key="Small_Test.dat")
+    print(f"Upload Speed: {round(100 / (time.time() - s, 2))}MB/s")
+    s = time.time()
+    client.download_file(bucket, "Small_Test.dat", "smallfile")
+    print(f"Download Speed: {round(100 / (time.time() - s, 2))}MB/s")
+    os.unlink("smallfile")
+    os.unlink("bigfile")
+
+
 parser = argparse.ArgumentParser(
     description="Scripts to test the performance of UoA services."
 )
@@ -181,11 +224,14 @@ parser.add_argument(
     action="store_true",
     default=False,
 )
+
 args = parser.parse_args()
 
-test_localdisk()
-test_speedtest()
-test_unifiles()
-test_dropbox()
-test_gdrive()
-test_onedrive()
+if args.s3:
+    test_s3()
+# test_localdisk()
+# test_speedtest()
+# test_unifiles()
+# test_dropbox()
+# test_gdrive()
+# test_onedrive()

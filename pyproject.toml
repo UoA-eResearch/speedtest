@@ -15,6 +15,7 @@ dropbox = "^11.36.2"
 PyDrive2 = "^1.17.0"
 onedrivesdk = "<2"
 boto3 = "^1.28.63"
+passpy = "^1.0.2"
 
 
 [build-system]

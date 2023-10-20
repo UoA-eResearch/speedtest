@@ -227,6 +227,31 @@ files = [
 ]
 
 [[package]]
+name = "click"
+version = "8.1.7"
+description = "Composable command line interface toolkit"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
+    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[[package]]
+name = "colorama"
+version = "0.4.6"
+description = "Cross-platform colored terminal text."
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+files = [
+    {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
+    {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
+]
+
+[[package]]
 name = "cryptography"
 version = "41.0.4"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
@@ -287,6 +312,37 @@ files = [
 requests = ">=2.16.2"
 six = ">=1.12.0"
 stone = ">=2"
+
+[[package]]
+name = "gitdb"
+version = "4.0.10"
+description = "Git Object Database"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "gitdb-4.0.10-py3-none-any.whl", hash = "sha256:c286cf298426064079ed96a9e4a9d39e7f3e9bf15ba60701e95f5492f28415c7"},
+    {file = "gitdb-4.0.10.tar.gz", hash = "sha256:6eb990b69df4e15bad899ea868dc46572c3f75339735663b81de79b06f17eb9a"},
+]
+
+[package.dependencies]
+smmap = ">=3.0.1,<6"
+
+[[package]]
+name = "gitpython"
+version = "3.1.40"
+description = "GitPython is a Python library used to interact with Git repositories"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "GitPython-3.1.40-py3-none-any.whl", hash = "sha256:cf14627d5a8049ffbf49915732e5eddbe8134c3bdb9d476e6182b676fc573f8a"},
+    {file = "GitPython-3.1.40.tar.gz", hash = "sha256:22b126e9ffb671fdd0c129796343a02bf67bf2994b35449ffc9321aa755e18a4"},
+]
+
+[package.dependencies]
+gitdb = ">=4.0.1,<5"
+
+[package.extras]
+test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mock", "mypy", "pre-commit", "pytest", "pytest-cov", "pytest-instafail", "pytest-subtests", "pytest-sugar"]
 
 [[package]]
 name = "google-api-core"
@@ -455,6 +511,26 @@ samples = ["Pillow"]
 tests = ["Mock"]
 
 [[package]]
+name = "passpy"
+version = "1.0.2"
+description = "ZX2C4's pass compatible Python library and cli"
+optional = false
+python-versions = ">=3.3"
+files = [
+    {file = "passpy-1.0.2-py3-none-any.whl", hash = "sha256:c28958cb50c8a9a4bc28a7be2ed1819ce1d4e22f77f5dfdde1a1b28882d8c956"},
+    {file = "passpy-1.0.2.tar.gz", hash = "sha256:fe758c2022213034be2dbf0fab4a1e41fd0f9aeb0582da2f936cd105162027a9"},
+]
+
+[package.dependencies]
+click = ">=2.0"
+GitPython = ">=1.0.1"
+pyperclip = ">=1.5"
+python-gnupg = ">=0.3.8"
+
+[package.extras]
+color = ["colorama (>=0.3)"]
+
+[[package]]
 name = "ply"
 version = "3.11"
 description = "Python Lex & Yacc"
@@ -577,6 +653,16 @@ files = [
 diagrams = ["jinja2", "railroad-diagrams"]
 
 [[package]]
+name = "pyperclip"
+version = "1.8.2"
+description = "A cross-platform clipboard module for Python. (Only handles plain text for now.)"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyperclip-1.8.2.tar.gz", hash = "sha256:105254a8b04934f0bc84e9c24eb360a591aaf6535c9def5f29d92af107a9bf57"},
+]
+
+[[package]]
 name = "pyspnego"
 version = "0.10.2"
 description = "Windows Negotiate Authentication Client and Server"
@@ -622,6 +708,17 @@ files = [
 
 [package.extras]
 cli = ["click (>=5.0)"]
+
+[[package]]
+name = "python-gnupg"
+version = "0.5.1"
+description = "A wrapper for the Gnu Privacy Guard (GPG or GnuPG)"
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-gnupg-0.5.1.tar.gz", hash = "sha256:5674bad4e93876c0b0d3197e314d7f942d39018bf31e2b833f6788a6813c3fb8"},
+    {file = "python_gnupg-0.5.1-py2.py3-none-any.whl", hash = "sha256:bf9b2d9032ef38139b7d64184176cd0b293eaeae6e4f93f50e304c7051174482"},
+]
 
 [[package]]
 name = "pyyaml"
@@ -754,6 +851,17 @@ pyspnego = "*"
 kerberos = ["pyspnego[kerberos]"]
 
 [[package]]
+name = "smmap"
+version = "5.0.1"
+description = "A pure Python implementation of a sliding window memory map manager"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "smmap-5.0.1-py3-none-any.whl", hash = "sha256:e6d8668fa5f93e706934a62d7b4db19c8d9eb8cf2adbb75ef1b675aa332b69da"},
+    {file = "smmap-5.0.1.tar.gz", hash = "sha256:dceeb6c0028fdb6734471eb07c0cd2aae706ccaecab45965ee83f11c8d3b1f62"},
+]
+
+[[package]]
 name = "speedtest-cli"
 version = "2.1.3"
 description = "Command line interface for testing internet bandwidth using speedtest.net"
@@ -866,4 +974,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "54788eeff2645944f4302b9dd0febf7f0724e98347f93166786417d2622ade53"
+content-hash = "cc6c136cb7da1ea4cb67b0cb3a7fa313b6de16a23da69aa2398a2bd98bb49d06"
