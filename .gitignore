@@ -132,3 +132,4 @@ dmypy.json
 credentials.json
 # OneDrive session
 session.pickle
+results.parquet
